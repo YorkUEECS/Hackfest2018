@@ -1,0 +1,46 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Session</th>
+          <th>Course Code</th>
+          <th>Course Credit</th>
+          <th>Course Title</th>
+          <th>Letter Grade</th>
+          <th>4.0 Scale</th>
+          <th>9.0 Scale</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="i in app.range(app.rowLength) track by $index">
+          <td>
+            <input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional - Enter course session">
+          </td>
+          <td>
+            <input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code">
+          </td>
+          <td>
+            <input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit">
+          </td>
+          <td>
+            <input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title">
+          </td>
+          <td>
+            <input ng-change="app.calcToYorkGrade(app.values['field'+$index], $index)" ng-model="app.values['field'+$index]" type="courseGrade" class="form-control" placeholder="Enter course grade"></td>
+          <td>
+            <label type="courseGrade" class="form-control"></label>
+          </td>
+          <td>
+            <label ng-bind="app.appArr[$index]" type="courseGrade" class="form-control"></label>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<footer>
+  <a ng-href="{{app.url}}">Webpack Angular Starter</a>
+</footer>
