@@ -1,6 +1,6 @@
-function converter(letterG, type){
+function converter(letterG, type) {
   let numberG;
-  if(type == 9){
+  if(type == 9) {
     switch (letterG) {
       case "A+":
         numberG = 9;
@@ -34,7 +34,7 @@ function converter(letterG, type){
         break;
     }
   }
-  else if (type == 4){
+  else if (type == 4) {
     switch (letterG) {
     case "A+":
       numberG = 4;
@@ -79,6 +79,5 @@ function converter(letterG, type){
       numberG = 0;
       break;}
   }
-}
   return numberG;
 }
