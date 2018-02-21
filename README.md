@@ -2,7 +2,7 @@
     Team Members:
         Mohamed Adda
         Ammiel Cruz
-        ...
+        Yi Ngan
 
     GPA Calculator Notes:
         All Course Marks - https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1
