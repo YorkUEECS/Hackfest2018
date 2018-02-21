@@ -2,6 +2,7 @@
     Team Members:
         Mohamed Adda
         Ammiel Cruz
+        Reem Alsaeed
         Yi Ngan
 
     GPA Calculator Notes:
