@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-US">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <body>
 
-<div ng-app="">
-  <p>Name : <input type="text" ng-model="name"></p>
-  <h1>Hello {{name}}, welcome YorkU GPA calculator.</h1>
+<div class="container">
+  <h2>GPA Calculator</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Session</th>
+      <th>Course Code</th>
+      <th>Course Credit</th>
+      <th>Course Title</th>
+      <th>Grade</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional - Enter course session"></td>
+      <td><input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code"></td>
+      <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit"></td>
+      <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title"></td>
+      <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="Enter course grade"></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
 
 </body>
 </html>
