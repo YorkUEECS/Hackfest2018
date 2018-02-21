@@ -1,4 +1,3 @@
-
 function converter(letterG, type){
   let numberG;
   if(type == 9){
