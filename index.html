@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<style>
-
-body {
-    background-color:rgb(255, 0, 0);
-}
-
-div{
-  background-color: LightGray;
-}
-</style>
 <script>
     function myFunction() {
         var field = document.getElementById("copiedGradeReport")
@@ -22,7 +11,6 @@ div{
     function extractSession() {
         var rx = /FW[0-9][0-9]/;
         var lgString = document.getElementById("copiedGradeReport").value;
-
         var sessions = lgString.match(/[A-z]{2}\d{2}/g);
         var courseCodes = lgString.match(/[A-z]{2}\s[A-z]{2,4}\s+\d{4}/g);
         var courseCredit = lgString.match(/\d*\.\d{2}/g);
@@ -34,7 +22,6 @@ div{
         for (var i = 0; i < courseGrade.length; ++i){
             courseGrade[i] = courseGrade[i].replace(/\t|\n/g,'');
         }
-
         var x = document.getElementById('gpaTable').tBodies[0];
         for (var i = 0; i < sessions.length; ++i){
             insertRow();
@@ -42,7 +29,9 @@ div{
             x.rows[i].getElementsByTagName('input')[1].value = courseCodes[i];
             x.rows[i].getElementsByTagName('input')[2].value = courseCredit[i];
             x.rows[i].getElementsByTagName('input')[3].value = courseTitle[i];
-            x.rows[i].getElementsByTagName('input')[4].value = courseGrade[i];
+            x.rows[i].getElementsByTagName('input')[4].value = courseGrade[i]
+            x.rows[i].getElementsByTagName('input')[5].value = calcNine(courseGrade[i]);
+            x.rows[i].getElementsByTagName('input')[6].value = calcFour(courseGrade[i]);
         }
         // alert(sessions.length + " Sessions are as follows:\n" + sessions.join("\n"));
         // alert(courseCodes.length + " Course codes are as follows\n" + courseCodes.join("\n"));
@@ -50,12 +39,10 @@ div{
         // alert(courseTitle.length + " Course titles are as follows\n" + courseTitle.join("\n"));
         // alert(courseGrade.length + " Course grades are as follows\n" + courseGrade.join("\n"));
     }
-
     function insertRow() {
         var x = document.getElementById('gpaTable').tBodies[0];
         var new_row = x.rows[0].cloneNode(true);
         var len = x.rows.length;
-
         var inp0 = new_row.cells[0].getElementsByTagName('input')[0];
         inp0.id += len;
         inp0.value = '';
@@ -76,8 +63,11 @@ div{
         inp5.id += len;
         inp5.value = '';
         x.appendChild(new_row);
+        var inp6 = new_row.cells[6].getElementsByTagName('input')[0];
+        inp6.id += len;
+        inp6.value = '';
+        x.appendChild(new_row);
     }
-
     function calcNine(letterG) {
         letterG = letterG.toUpperCase();
         switch (letterG) {
@@ -111,13 +101,11 @@ div{
             case "F":
                 numberG = 0;
                 break;
+            default:
+                numberG = "N/A"
         }
         return numberG;
     }
-
-<<<<<<< HEAD
-    function rowIndex(x) {
-=======
     function calcFour(letterG) {
         letterG = letterG.toUpperCase();
         switch (letterG) {
@@ -167,33 +155,35 @@ div{
                 numberG = "N/A";}
         return numberG;
     }
-
-
     function updateNineScale(x) {
         var row = x.parentNode.parentNode;
         var i = row.rowIndex;
         x.value = calcNine(row.getElementsByTagName('input')[4].value);
-
     }
-
     function updateFourScale(x) {
->>>>>>> a60df78e8f0de99053015b82cb284040ad8d6404
         var row = x.parentNode.parentNode;
         var i = row.rowIndex;
-        x.value = row.getElementsByTagName('input')[4].value;
-
+        x.value = calcFour(row.getElementsByTagName('input')[4].value);
+    }
+    function calcGPAFourScale() {
+        var i = document.getElementById("myTable").rows.length;
+        return i;
+    }
+    function calcGPA() {
+        alert(calcGPAFourScale())
     }
 </script>
 
-<body >
+<body>
 
 <div class="container">
   <h2>GPA Calculator</h2>
   <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
-  <textarea id="copiedGradeReport" rows="20" cols="170" ></textarea>
-  <br><button onclick="myFunction()" class="btn btn-outline-danger">MsgBox</button>
-  <button onclick="extractSession()" class="btn btn-outline-danger">Parse</button>
-  <button onclick="insertRow()" class="btn btn-outline-danger">Add Row</button>
+  <textarea id="copiedGradeReport" rows="20" cols="100"></textarea>
+  <br>
+  <button onclick="extractSession()">Parse</button>
+  <button onclick="insertRow()">Add Row</button>
+  <button onclick="calcGPA()">Calculate GPA</button>
   <table class="table" id="gpaTable">
     <thead>
     <tr>
@@ -203,6 +193,7 @@ div{
       <td>Course Title</td>
       <td>Grade</td>
       <td>YorkU Scale</td>
+      <td>4.0 Scale</td>
     </tr>
     </thead>
     <tbody>
@@ -212,7 +203,8 @@ div{
       <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit"></td>
       <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title"></td>
       <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="Enter course grade"></td>
-      <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" onblur="rowIndex(this)"></td>
+      <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" placeholder="Click here to update" onclick="updateNineScale(this)"></td>
+      <td><input type="otherScale" class="form-control" id="otherScaleCalc" aria-describedby="otherScaleCalcHelp" placeholder="Click here to update" onclick="updateFourScale(this)"></td>
     </tr>
     </tbody>
   </table>
