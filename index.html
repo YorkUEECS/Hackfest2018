@@ -79,6 +79,7 @@ div{
     }
 
     function calcNine(letterG) {
+        letterG = letterG.toUpperCase();
         switch (letterG) {
             case "A+":
                 numberG = 9;
@@ -114,7 +115,69 @@ div{
         return numberG;
     }
 
+<<<<<<< HEAD
     function rowIndex(x) {
+=======
+    function calcFour(letterG) {
+        letterG = letterG.toUpperCase();
+        switch (letterG) {
+            case "A+":
+                numberG = 4;
+                break;
+            case "A":
+                numberG = 4;
+                break;
+            case "A-":
+                numberG = 3.7;
+                break;
+            case "B+":
+                numberG = 3.3;
+                break;
+            case "B":
+                numberG = 3;
+                break;
+            case "B-":
+                numberG = 2.7;
+                break;
+            case "C+":
+                numberG = 2.3;
+                break;
+            case "C":
+                numberG = 2;
+                break;
+            case "C-":
+                numberG = 1.7;
+                break;
+            case "D+":
+                numberG = 1.3;
+                break;
+            case "D":
+                numberG = 1;
+                break;
+            case "D-":
+                numberG = 0.7;
+                break;
+            case "E":
+                numberG = 0;
+                break;
+            case "F":
+                numberG = 0;
+                break;
+            default:
+                numberG = "N/A";}
+        return numberG;
+    }
+
+
+    function updateNineScale(x) {
+        var row = x.parentNode.parentNode;
+        var i = row.rowIndex;
+        x.value = calcNine(row.getElementsByTagName('input')[4].value);
+
+    }
+
+    function updateFourScale(x) {
+>>>>>>> a60df78e8f0de99053015b82cb284040ad8d6404
         var row = x.parentNode.parentNode;
         var i = row.rowIndex;
         x.value = row.getElementsByTagName('input')[4].value;
