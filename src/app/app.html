@@ -1,6 +1,11 @@
+<h1>GPA Converter</h1>
 <main>
   <div class="container-fluid">
     <div class="row">
+      <button class="btn btn-primary" ng-click="app.calculateGPA()">
+        Calculate
+      </button>
+
       <table class="table">
         <thead>
         <tr>
@@ -22,13 +27,13 @@
             <input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code">
           </td>
           <td>
-            <input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit">
+            <input ng-model="app.courseCredit['field'+$index]" type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit">
           </td>
           <td>
             <input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title">
           </td>
           <td>
-            <input ng-change="app.calcToYorkGrade(app.values['field'+$index], $index)" ng-model="app.values['field'+$index]" type="courseGrade" class="form-control" placeholder="Enter course grade"></td>
+            <input ng-change="app.calcToYorkGrade(app.courseGradeValues['field'+$index], $index)" ng-model="app.courseGradeValues['field'+$index]" class="form-control" placeholder="Enter course grade"></td>
           <td>
             <label type="courseGrade" class="form-control"></label>
           </td>
@@ -40,7 +45,15 @@
       </table>
     </div>
   </div>
+
+  <h1>{{ app.GPA }}</h1>
+
+  <div class="row">
+    <h1>Go to <a href="http://myonlineservices.students.yorku.ca/">http://myonlineservices.students.yorku.ca/</a> and navigate to your course grades</h1>
+    <div class="text-center">
+      <textarea style="height:300px; width: 500px; text-align: center"></textarea>
+    </div>
+  </div>
 </main>
 <footer>
-  <a ng-href="{{app.url}}">Webpack Angular Starter</a>
 </footer>
