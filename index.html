@@ -2,6 +2,7 @@
 <html lang="en-US">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     function myFunction() {
         var field = document.getElementById("copiedGradeReport")
@@ -11,19 +12,102 @@
         var rx = /FW[0-9][0-9]/;
         var lgString = document.getElementById("copiedGradeReport").value;
 
-        var sessions = lgString.match(/FW\d{2}/g);
-        var courseCodes = lgString.match(/[A-z]{2}\s[A-z]{2,4}\s\d{4}/g);
+        var sessions = lgString.match(/[A-z]{2}\d{2}/g);
+        var courseCodes = lgString.match(/[A-z]{2}\s[A-z]{2,4}\s+\d{4}/g);
         var courseCredit = lgString.match(/\d*\.\d{2}/g);
-        var courseTitle = lgString.match(/\t[\w\u0020]\t/g);
-        var courseGrade = lgString.match(/\t[A-F]{1,4}\+?\-?\n{1}|\t[A-F]{1,4}\+?\-?$/g);
-        for (var i = 0; i < courseGrade.length; ++i){
-            courseGrade[i] = courseGrade[i].replace('\n','');
+        var courseTitle = lgString.match(/\t[\w\u002C?\u003A?\u002E?\u0020*]+\t/g);
+        var courseGrade = lgString.match(/\t[A-F]{1,4}\+?\-?\n|\t[A-F]{1,4}\+?\-?$|in progress|\t[A-F]\+?\-?\u0020+NCR|\t[A-F]\+?\-?\u0020+NGR/g);
+        for (var i = 0; i < courseTitle.length; ++i){
+            courseTitle[i] = courseTitle[i].replace(/\t|\n/g,'');
         }
-        alert(sessions.join("\n"));
-        alert(courseCodes.join("\n"));
-        alert(courseCredit.join("\n"));
-        alert(courseTitle.join("\n"));
-        alert(courseGrade.join("\n"));
+        for (var i = 0; i < courseGrade.length; ++i){
+            courseGrade[i] = courseGrade[i].replace(/\t|\n/g,'');
+        }
+
+        var x = document.getElementById('gpaTable').tBodies[0];
+        for (var i = 0; i < sessions.length; ++i){
+            insertRow();
+            x.rows[i].getElementsByTagName('input')[0].value = sessions[i];
+            x.rows[i].getElementsByTagName('input')[1].value = courseCodes[i];
+            x.rows[i].getElementsByTagName('input')[2].value = courseCredit[i];
+            x.rows[i].getElementsByTagName('input')[3].value = courseTitle[i];
+            x.rows[i].getElementsByTagName('input')[4].value = courseGrade[i];
+        }
+        // alert(sessions.length + " Sessions are as follows:\n" + sessions.join("\n"));
+        // alert(courseCodes.length + " Course codes are as follows\n" + courseCodes.join("\n"));
+        // alert(courseCredit.length + " Course credits are as follows\n" + courseCredit.join("\n"));
+        // alert(courseTitle.length + " Course titles are as follows\n" + courseTitle.join("\n"));
+        // alert(courseGrade.length + " Course grades are as follows\n" + courseGrade.join("\n"));
+    }
+
+    function insertRow() {
+        var x = document.getElementById('gpaTable').tBodies[0];
+        var new_row = x.rows[0].cloneNode(true);
+        var len = x.rows.length;
+
+        var inp0 = new_row.cells[0].getElementsByTagName('input')[0];
+        inp0.id += len;
+        inp0.value = '';
+        var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+        inp1.id += len;
+        inp1.value = '';
+        var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+        inp2.id += len;
+        inp2.value = '';
+        var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
+        inp3.id += len;
+        inp3.value = '';
+        var inp4 = new_row.cells[4].getElementsByTagName('input')[0];
+        inp4.id += len;
+        inp4.value = '';
+        x.appendChild(new_row);
+        var inp5 = new_row.cells[5].getElementsByTagName('input')[0];
+        inp5.id += len;
+        inp5.value = '';
+        x.appendChild(new_row);
+    }
+
+    function calcNine(letterG) {
+        switch (letterG) {
+            case "A+":
+                numberG = 9;
+                break;
+            case "A":
+                numberG = 8;
+                break;
+            case "B+":
+                numberG = 7;
+                break;
+            case "B":
+                numberG = 6;
+                break;
+            case "C+":
+                numberG = 5;
+                break;
+            case "C":
+                numberG = 4;
+                break;
+            case "D+":
+                numberG = 3;
+                break;
+            case "D":
+                numberG = 2;
+                break;
+            case "E":
+                numberG = 1;
+                break;
+            case "F":
+                numberG = 0;
+                break;
+        }
+        return numberG;
+    }
+
+    function rowIndex(x) {
+        var row = x.parentNode.parentNode;
+        var i = row.rowIndex;
+        x.value = row.getElementsByTagName('input')[4].value;
+
     }
 </script>
 
@@ -31,17 +115,20 @@
 
 <div class="container">
   <h2>GPA Calculator</h2>
-  <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1">YorkU Grades</a><br>
+  <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
   <textarea id="copiedGradeReport" rows="20" cols="100"></textarea>
-  <br><button onclick="myFunction()">MsgBox</button><button onclick="extractSession()">Parse</button>
-  <table class="table">
+  <br><button onclick="myFunction()">MsgBox</button>
+  <button onclick="extractSession()">Parse</button>
+  <button onclick="insertRow()">Add Row</button>
+  <table class="table" id="gpaTable">
     <thead>
     <tr>
-      <th>Session</th>
-      <th>Course Code</th>
-      <th>Course Credit</th>
-      <th>Course Title</th>
-      <th>Grade</th>
+      <td>Session</td>
+      <td>Course Code</td>
+      <td>Course Credit</td>
+      <td>Course Title</td>
+      <td>Grade</td>
+      <td>YorkU Scale</td>
     </tr>
     </thead>
     <tbody>
@@ -51,6 +138,7 @@
       <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit"></td>
       <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title"></td>
       <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="Enter course grade"></td>
+      <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" onblur="rowIndex(this)"></td>
     </tr>
     </tbody>
   </table>
