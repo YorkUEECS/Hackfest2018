@@ -170,11 +170,54 @@ div{background-color: LightGray;}
         x.value = calcFour(row.getElementsByTagName('input')[4].value);
     }
     function calcGPAFourScale() {
-        var i = document.getElementById("gpaTable").rows.length;
-        return i;
+        var x = document.getElementById("gpaTable").rows.length;
+        // alert(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
+        var sumProd = 0;
+        var sumCred = 0;
+        var gpaScale = 0;
+        for(var i = 1; i <= x - 1; i++) {
+            var checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
+            var checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
+
+            if ( checkIfInt || checkIfloat) {
+                sumCred = sumCred + parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value);
+                sumProd = sumProd + (parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value)*parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value));
+                gpaScale = sumProd / sumCred;
+            }
+        }
+        // alert(sumCred);
+        // alert(sumProd);
+        // alert(gpaScale);
+        return gpaScale;
     }
     function calcGPA() {
-        alert(calcGPAFourScale())
+        calcGPAFourScale();
+    }
+
+    function calcGPANineScale() {
+        var x = document.getElementById("gpaTable").rows.length;
+        // alert(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
+        var sumProd = 0;
+        var sumCred = 0;
+        var gpaScale = 0;
+        for(var i = 1; i <= x - 1; i++) {
+            var checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value);
+            var checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value);
+
+            if ( checkIfInt || checkIfloat) {
+                sumCred = sumCred + parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value);
+                sumProd = sumProd + (parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value)*parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value));
+                gpaScale = sumProd / sumCred;
+            }
+        }
+        // alert(sumCred);
+        // alert(sumProd);
+        // alert(gpaFourScale);
+        return gpaScale;
+    }
+    function calcGPA() {
+        alert("GPA in YorkU Scale: " + calcGPANineScale());
+        alert("GPA in 4.0 Scale: " + calcGPAFourScale());
     }
 </script>
 
@@ -183,7 +226,7 @@ div{background-color: LightGray;}
 <div class="container">
   <h2>GPA Calculator</h2>
   <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
-  <textarea id="copiedGradeReport" rows="20" cols="185%"></textarea>
+  <textarea id="copiedGradeReport" rows="20" cols="100%"></textarea>
   <br>
   <button onclick="extractSession()">Parse</button>
   <button onclick="insertRow()">Add Row</button>
