@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
 <style>
 body {
   background-color:rgb(255, 0, 0);
@@ -11,11 +13,9 @@ body {
   margin-bottom: 5%;
 }
 </style>
+
 <body>
   <div class="container" id="hero">
-    <div class="row">
-
-    </div>
     <h2>GPA Calculator</h2>
     <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
     <textarea id="copiedGradeReport" rows="20" cols="100%"></textarea>
@@ -163,7 +163,7 @@ body {
                   numberG = 4;
                   break;
               case "A":
-                  numberG = 4;
+                  numberG = 3.8;
                   break;
               case "A-":
                   numberG = 3.7;
@@ -266,7 +266,7 @@ body {
           swal(`${calcGPAFourScale().toFixed(2)}`, "GPA in 4.0 Scale: " + calcGPAFourScale().toFixed(2), "success");
           swal({
               title: "GPA Calculated!",
-              text: `GPA in YorkU Scale: ${calcGPANineScale().toFixed(2)} \n GPA in 4.0 Scale: ${calcGPAFourScale().toFixed(2)}`,
+              text: `YorkU Scale: ${calcGPANineScale().toFixed(2)} \n 4.0 Scale: ${calcGPAFourScale().toFixed(2)}`,
               icon: "success"
           });
       }
