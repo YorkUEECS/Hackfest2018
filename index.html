@@ -7,10 +7,25 @@
 body {
   background-color:rgb(255, 0, 0);
 }
+
 #hero {
-  background-color: white;
+  background-color: lightgray;
   margin-top: 5%;
   margin-bottom: 5%;
+  border-radius: 10px;
+}
+
+#copiedGradeReport {
+  border-radius: 10px;
+}
+
+#copiedGradeReport {
+  width: 100%;
+}
+
+#textArea {
+  margin-left: 1.6%;
+  margin-right: 1.6%;
 }
 </style>
 
@@ -18,13 +33,22 @@ body {
   <div class="container" id="hero">
     <h2>GPA Calculator</h2>
     <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
-    <textarea id="copiedGradeReport" rows="20" cols="100%"></textarea>
+    <div class="row" id="textArea">
+      <textarea id="copiedGradeReport" rows="20" cols="100%"></textarea>
+    </div>
     <br>
-    <button class="btn btn-primary" onclick="extractSession()">Parse</button>
-    <button class="btn btn-info" onclick="insertRow()">Add Row</button>
-    <button class="btn btn-success" onclick="calcGPA()">Calculate GPA</button>
-    <table class="table" id="gpaTable">
-      <thead>
+    <div class="col-md-4">
+      <button class="btn btn-primary btn-block" onclick="extractSession()"><h4>Parse</h4></button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-info btn-block" onclick="insertRow()"><h4>Add Row</h4></button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success btn-block" onclick="calcGPA()"><h4>Calculate GPA</h4></button>
+    </div>
+    <div class="col-md-12">
+      <table class="table" id="gpaTable">
+        <thead>
         <tr>
           <td>Session</td>
           <td>Course Code</td>
@@ -34,8 +58,8 @@ body {
           <td>YorkU Scale</td>
           <td>4.0 Scale</td>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr>
           <td><input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional - Enter course session"></td>
           <td><input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code"></td>
@@ -45,8 +69,9 @@ body {
           <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" placeholder="Click here to update" onclick="updateNineScale(this)"></td>
           <td><input type="otherScale" class="form-control" id="otherScaleCalc" aria-describedby="otherScaleCalcHelp" placeholder="Click here to update" onclick="updateFourScale(this)"></td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
