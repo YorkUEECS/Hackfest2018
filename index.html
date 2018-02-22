@@ -175,6 +175,10 @@
 
         alert(i);
     }
+
+    function calcGPA() {
+        alert("G")
+    }
 </script>
 
 <body>
@@ -183,9 +187,10 @@
   <h2>GPA Calculator</h2>
   <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
   <textarea id="copiedGradeReport" rows="20" cols="100"></textarea>
-  <br><button onclick="myFunction()">MsgBox</button>
+  <br>
   <button onclick="extractSession()">Parse</button>
   <button onclick="insertRow()">Add Row</button>
+  <button onclick="calcGPA()">Calculate GPA</button>
   <table class="table" id="gpaTable">
     <thead>
     <tr>
