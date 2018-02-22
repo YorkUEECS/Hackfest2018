@@ -3,6 +3,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<style>
+body {background-color:rgb(255, 0, 0);}
+div{background-color: LightGray;}
+</style>
 <script>
     function myFunction() {
         var field = document.getElementById("copiedGradeReport")
@@ -179,7 +183,7 @@
 <div class="container">
   <h2>GPA Calculator</h2>
   <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank">YorkU Grades</a><br>
-  <textarea id="copiedGradeReport" rows="20" cols="100"></textarea>
+  <textarea id="copiedGradeReport" rows="20" cols="185%"></textarea>
   <br>
   <button onclick="extractSession()">Parse</button>
   <button onclick="insertRow()">Add Row</button>
