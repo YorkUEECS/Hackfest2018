@@ -247,6 +247,8 @@ body {
           var sumCred = 0;
           var gpaScale = 0;
           for(var i = 1; i <= x - 1; i++) {
+              document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value = calcNine(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[4].value);
+              document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value = calcFour(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[4].value);
               var checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
               var checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
 
@@ -254,6 +256,7 @@ body {
                   sumCred = sumCred + parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value);
                   sumProd = sumProd + (parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value)*parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value));
                   gpaScale = sumProd / sumCred;
+
               }
           }
           // alert(sumCred);
