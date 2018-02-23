@@ -61,13 +61,13 @@ body {
         </thead>
         <tbody>
         <tr>
-          <td><input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional - Enter course session"></td>
-          <td><input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code"></td>
-          <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit"></td>
-          <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title"></td>
-          <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="Enter course grade"></td>
-          <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" placeholder="Click here to update" onclick="updateNineScale(this)"></td>
-          <td><input type="otherScale" class="form-control" id="otherScaleCalc" aria-describedby="otherScaleCalcHelp" placeholder="Click here to update" onclick="updateFourScale(this)"></td>
+          <td><input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional - Enter course session" size="4"></td>
+          <td><input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code" size="6"></td>
+          <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit" size="4"></td>
+          <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title" size="35"></td>
+          <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="Enter course grade" size="3"></td>
+          <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" placeholder="Click here to update" onclick="updateNineScale(this)" size="3"></td>
+          <td><input type="otherScale" class="form-control" id="otherScaleCalc" aria-describedby="otherScaleCalcHelp" placeholder="Click here to update" onclick="updateFourScale(this)" size="3"></td>
         </tr>
         </tbody>
       </table>
@@ -89,7 +89,7 @@ body {
           var sessions = lgString.match(/[A-z]{2}\d{2}/g);
           var courseCodes = lgString.match(/[A-z]{2}\s[A-z]{2,4}\s+\d{4}/g);
           var courseCredit = lgString.match(/\d*\.\d{2}/g);
-          var courseTitle = lgString.match(/\t[\w\u002C?\u003A?\u002E?\u0020*]+\t/g);
+          var courseTitle = lgString.match(/\t[\D\u002C?\u003A?\u002E?\u0020*]+\t/g);
           var courseGrade = lgString.match(/\t[A-F]{1,4}\+?\-?\n|\t[A-F]{1,4}\+?\-?$|in progress|\t[A-F]\+?\-?\u0020+NCR|\t[A-F]\+?\-?\u0020+NGR/g);
           for (var i = 0; i < courseTitle.length; ++i){
               courseTitle[i] = courseTitle[i].replace(/\t|\n/g,'');
@@ -144,6 +144,7 @@ body {
           x.appendChild(new_row);
       }
       function calcNine(letterG) {
+          letterG = letterG.replace(/\s|NGR/g, "");
           letterG = letterG.toUpperCase();
           switch (letterG) {
               case "A+":
@@ -182,6 +183,7 @@ body {
           return numberG;
       }
       function calcFour(letterG) {
+          letterG = letterG.replace(/\s|NGR/g, "");
           letterG = letterG.toUpperCase();
           switch (letterG) {
               case "A+":
@@ -289,6 +291,7 @@ body {
           // alert(gpaFourScale);
           return gpaScale;
       }
+
       function calcGPA() {
           swal(`${calcGPANineScale().toFixed(2)}`, "GPA in YorkU Scale: " + calcGPANineScale().toFixed(2), "success");
           swal(`${calcGPAFourScale().toFixed(2)}`, "GPA in 4.0 Scale: " + calcGPAFourScale().toFixed(2), "success");
