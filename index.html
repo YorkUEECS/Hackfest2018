@@ -34,7 +34,7 @@ body {
     <h1>GPA Calculator</h1>
     <a href="https://wrem.sis.yorku.ca/Apps/WebObjects/ydml.woa/wa/DirectAction/document?name=CourseListv1" target="_blank"><font size="5"><u>>>Click here for YorkU Grades</u></font></a><br>
     <div class="row" id="textArea">
-      <textarea id="copiedGradeReport" rows="20" cols="100%"></textarea>
+      <textarea id="copiedGradeReport" rows="20" cols="100%" placeholder="Paste table from YorkU webpage &quot List of Courses and Grades&quot here. " onkeyup="extractSession()"></textarea>
     </div>
     <br>
     <div class="col-md-4">
@@ -61,13 +61,13 @@ body {
         </thead>
         <tbody>
         <tr>
-          <td><input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional - Enter course session" size="4"></td>
-          <td><input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional - Enter course code" size="6"></td>
-          <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="Enter course credit" size="4"></td>
-          <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional - Enter course title" size="35"></td>
-          <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="Enter course grade" size="3"></td>
-          <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" placeholder="Click here to update" onclick="updateNineScale(this)" size="3"></td>
-          <td><input type="otherScale" class="form-control" id="otherScaleCalc" aria-describedby="otherScaleCalcHelp" placeholder="Click here to update" onclick="updateFourScale(this)" size="3"></td>
+          <td><input type="session" class="form-control" id="inputSession" aria-describedby="sessionHelp" placeholder="Optional" size="4" onkeyup="inputChecksAndUpdates(this)"></td>
+          <td><input type="courseCode" class="form-control" id="inputCourseCode" aria-describedby="courseCodeHelp" placeholder="Optional" size="6" onkeyup="inputChecksAndUpdates(this)"></td>
+          <td><input type="courseCredit" class="form-control" id="inputCourseCredit" aria-describedby="courseCreditHelp" placeholder="eg. 3.00" size="4" onkeyup="inputChecksAndUpdates(this)"></td>
+          <td><input type="courseTitle" class="form-control" id="inputCourseTitle" aria-describedby="courseTitleHelp" placeholder="Optional" size="35" onkeyup="inputChecksAndUpdates(this)"></td>
+          <td><input type="courseGrade" class="form-control" id="inputCourseGrade" aria-describedby="courseGradeHelp" placeholder="eg. A+" size="3" onkeyup="inputChecksAndUpdates(this)"></td>
+          <td><input type="yorkScale" class="form-control" id="yorkScaleCalc" aria-describedby="yorkScaleCalcHelp" placeholder="N/A" size="3" readonly onclick="isRowOfInputsPopulated(this)"></td>
+          <td><input type="otherScale" class="form-control" id="otherScaleCalc" aria-describedby="otherScaleCalcHelp" placeholder="N/A" size="3" readonly></td>
         </tr>
         </tbody>
       </table>
@@ -148,6 +148,7 @@ body {
           inp6.value = '';
           x.appendChild(new_row);
       }
+
       function calcNine(letterG) {
           letterG = letterG.replace(/\s|NGR/g, "");
           letterG = letterG.toUpperCase();
@@ -237,15 +238,44 @@ body {
                   numberG = "N/A";}
           return numberG;
       }
+
+      function inputChecksAndUpdates (x) {
+          isRowOfInputsPopulated(x);
+          updateScales(x);
+      }
+
+      function isRowOfInputsPopulated(x) {
+          var row = x.parentNode.parentNode;
+          var numberOfRows = document.getElementById("gpaTable").getElementsByTagName('tr').length - 1;
+          var numberOfInputs = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input').length;
+          var arr;
+          var isInputFilled = false;
+          for( var i = 0; i < numberOfInputs; i++) {
+              var inputValue = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input')[i].value
+              if (!(inputValue == "" || inputValue == null)) {
+                  isInputFilled = true;
+                  break
+              }
+          }
+          if (isInputFilled){
+              insertRow();
+          }
+      }
+
+      function updateScales(x) {
+          updateFourScale(x);
+          updateNineScale(x);
+      }
+
       function updateNineScale(x) {
           var row = x.parentNode.parentNode;
           var i = row.rowIndex;
-          x.value = calcNine(row.getElementsByTagName('input')[4].value);
+          document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value = calcNine(row.getElementsByTagName('input')[4].value);
       }
       function updateFourScale(x) {
           var row = x.parentNode.parentNode;
           var i = row.rowIndex;
-          x.value = calcFour(row.getElementsByTagName('input')[4].value);
+          document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value = calcFour(row.getElementsByTagName('input')[4].value);
       }
       function calcGPAFourScale() {
           var x = document.getElementById("gpaTable").rows.length;
