@@ -98,8 +98,13 @@ body {
               courseGrade[i] = courseGrade[i].replace(/\t|\n/g,'');
           }
           var x = document.getElementById('gpaTable').tBodies[0];
-          for (var i = 0; i < sessions.length; ++i){
+
+          var j = ((sessions.length + 1)- x.rows.length);
+          for (var i = 0; i < j; i++){
               insertRow();
+          }
+
+          for (var i = 0; i < sessions.length; ++i){
               x.rows[i].getElementsByTagName('input')[0].value = sessions[i];
               x.rows[i].getElementsByTagName('input')[1].value = courseCodes[i];
               x.rows[i].getElementsByTagName('input')[2].value = courseCredit[i];
