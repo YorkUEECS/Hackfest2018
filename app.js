@@ -69,93 +69,45 @@ function insertRow() {
 }
 
 function calcNine(letterG) {
-    letterG = letterG.replace(/\s|NGR/g, "");
-    letterG = letterG.toUpperCase();
-    switch (letterG) {
-        case "A+":
-            numberG = 9;
-            break;
-        case "A":
-            numberG = 8;
-            break;
-        case "B+":
-            numberG = 7;
-            break;
-        case "B":
-            numberG = 6;
-            break;
-        case "C+":
-            numberG = 5;
-            break;
-        case "C":
-            numberG = 4;
-            break;
-        case "D+":
-            numberG = 3;
-            break;
-        case "D":
-            numberG = 2;
-            break;
-        case "E":
-            numberG = 1;
-            break;
-        case "F":
-            numberG = 0;
-            break;
-        default:
-            numberG = "N/A"
-    }
-    return numberG;
+    letterG = letterG.replace(/\s|NGR/g, "").toUpperCase();
+
+    const numberGrade = {
+        'A+': 9,
+        'A': 8,
+        'B+': 7,
+        'B': 6,
+        'C+': 5,
+        'C': 4,
+        'D+': 3,
+        'D': 2,
+        'E': 1,
+        'F': 0
+    };
+
+    return numberGrade.hasOwnProperty(letterG) ? numberGrade[letterG] : 'N/A';
 }
+
 function calcFour(letterG) {
-    letterG = letterG.replace(/\s|NGR/g, "");
-    letterG = letterG.toUpperCase();
-    switch (letterG) {
-        case "A+":
-            numberG = 4;
-            break;
-        case "A":
-            numberG = 3.8;
-            break;
-        case "A-":
-            numberG = 3.7;
-            break;
-        case "B+":
-            numberG = 3.3;
-            break;
-        case "B":
-            numberG = 3;
-            break;
-        case "B-":
-            numberG = 2.7;
-            break;
-        case "C+":
-            numberG = 2.3;
-            break;
-        case "C":
-            numberG = 2;
-            break;
-        case "C-":
-            numberG = 1.7;
-            break;
-        case "D+":
-            numberG = 1.3;
-            break;
-        case "D":
-            numberG = 1;
-            break;
-        case "D-":
-            numberG = 0.7;
-            break;
-        case "E":
-            numberG = 0;
-            break;
-        case "F":
-            numberG = 0;
-            break;
-        default:
-            numberG = "N/A";}
-    return numberG;
+    letterG = letterG.replace(/\s|NGR/g, "").toUpperCase();
+
+    const numberGrade = {
+        'A+': 4,
+        'A': 3.8,
+        'A-': 3.7,
+        'B+': 3.3,
+        'B': 3,
+        'B-': 2.7,
+        'C+': 2.3,
+        'C': 2,
+        'C-': 1.7,
+        'D+': 1.3,
+        'D': 1,
+        'D-': 0.7,
+        'E': 0,
+        'F': 0
+    };
+
+    return numberGrade.hasOwnProperty(letterG) ? numberGrade[letterG] : 'N/A';
 }
 
 function inputChecksAndUpdates (x) {
