@@ -1,7 +1,7 @@
 function myFunction() {
     let field = document.getElementById("copiedGradeReport")
-    console.log(field.value);
 }
+
 function extractSession() {
     let rx = /FW[0-9][0-9]/;
     let lgString = document.getElementById("copiedGradeReport").value;
@@ -13,13 +13,16 @@ function extractSession() {
     for (let i = 0; i < courseTitle.length; ++i){
         courseTitle[i] = courseTitle[i].replace(/\t|\n/g,'');
     }
-    for (let i = 0; i < courseGrade.length; ++i){
+
+    for (let i = 0; i < courseGrade.length; ++i) {
         courseGrade[i] = courseGrade[i].replace(/\t|\n/g,'');
     }
+
     let x = document.getElementById('gpaTable').tBodies[0];
 
     let j = ((sessions.length + 1)- x.rows.length);
-    for (let i = 0; i < j; i++){
+
+    for (let i = 0; i < j; i++) {
         insertRow();
     }
 
@@ -32,12 +35,8 @@ function extractSession() {
         x.rows[i].getElementsByTagName('input')[5].value = calcNine(courseGrade[i]);
         x.rows[i].getElementsByTagName('input')[6].value = calcFour(courseGrade[i]);
     }
-    // console.log(sessions.length + " Sessions are as follows:\n" + sessions.join("\n"));
-    // console.log(courseCodes.length + " Course codes are as follows\n" + courseCodes.join("\n"));
-    // console.log(courseCredit.length + " Course credits are as follows\n" + courseCredit.join("\n"));
-    // console.log(courseTitle.length + " Course titles are as follows\n" + courseTitle.join("\n"));
-    // console.log(courseGrade.length + " Course grades are as follows\n" + courseGrade.join("\n"));
 }
+
 function insertRow() {
     let x = document.getElementById('gpaTable').tBodies[0];
     let new_row = x.rows[0].cloneNode(true);
@@ -110,7 +109,7 @@ function calcFour(letterG) {
     return numberGrade.hasOwnProperty(letterG) ? numberGrade[letterG] : 'N/A';
 }
 
-function inputChecksAndUpdates (x) {
+function inputChecksAndUpdates(x) {
     isRowOfInputsPopulated(x);
     updateScales(x);
 }
@@ -121,13 +120,15 @@ function isRowOfInputsPopulated(x) {
     let numberOfInputs = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input').length;
     let arr;
     let isInputFilled = false;
-    for( let i = 0; i < numberOfInputs; i++) {
+
+    for (let i = 0; i < numberOfInputs; i++) {
         let inputValue = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input')[i].value
         if (!(inputValue == "" || inputValue == null)) {
             isInputFilled = true;
             break
         }
     }
+
     if (isInputFilled){
         insertRow();
     }
@@ -143,18 +144,19 @@ function updateNineScale(x) {
     let i = row.rowIndex;
     document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value = calcNine(row.getElementsByTagName('input')[4].value);
 }
+
 function updateFourScale(x) {
     let row = x.parentNode.parentNode;
     let i = row.rowIndex;
     document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value = calcFour(row.getElementsByTagName('input')[4].value);
 }
+
 function calcGPAFourScale() {
     let x = document.getElementById("gpaTable").rows.length;
-    // console.log(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
     let sumProd = 0;
     let sumCred = 0;
     let gpaScale = 0;
-    for(let i = 1; i <= x - 1; i++) {
+    for (let i = 1; i <= x - 1; i++) {
         document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value = calcNine(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[4].value);
         document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value = calcFour(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[4].value);
         let checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
@@ -167,18 +169,16 @@ function calcGPAFourScale() {
 
         }
     }
-    // console.log(sumCred);
-    // console.log(sumProd);
-    // console.log(gpaScale);
+
     return gpaScale;
 }
+
 function calcGPA() {
     calcGPAFourScale();
 }
 
 function calcGPANineScale() {
     let x = document.getElementById("gpaTable").rows.length;
-    // console.log(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
     let sumProd = 0;
     let sumCred = 0;
     let gpaScale = 0;
@@ -192,9 +192,7 @@ function calcGPANineScale() {
             gpaScale = sumProd / sumCred;
         }
     }
-    // console.log(sumCred);
-    // console.log(sumProd);
-    // console.log(gpaFourScale);
+
     return gpaScale;
 }
 
