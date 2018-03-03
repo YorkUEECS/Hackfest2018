@@ -1,6 +1,6 @@
 function myFunction() {
     var field = document.getElementById("copiedGradeReport")
-    alert(field.value);
+    console.log(field.value);
 }
 function extractSession() {
     var rx = /FW[0-9][0-9]/;
@@ -32,11 +32,11 @@ function extractSession() {
         x.rows[i].getElementsByTagName('input')[5].value = calcNine(courseGrade[i]);
         x.rows[i].getElementsByTagName('input')[6].value = calcFour(courseGrade[i]);
     }
-    // alert(sessions.length + " Sessions are as follows:\n" + sessions.join("\n"));
-    // alert(courseCodes.length + " Course codes are as follows\n" + courseCodes.join("\n"));
-    // alert(courseCredit.length + " Course credits are as follows\n" + courseCredit.join("\n"));
-    // alert(courseTitle.length + " Course titles are as follows\n" + courseTitle.join("\n"));
-    // alert(courseGrade.length + " Course grades are as follows\n" + courseGrade.join("\n"));
+    // console.log(sessions.length + " Sessions are as follows:\n" + sessions.join("\n"));
+    // console.log(courseCodes.length + " Course codes are as follows\n" + courseCodes.join("\n"));
+    // console.log(courseCredit.length + " Course credits are as follows\n" + courseCredit.join("\n"));
+    // console.log(courseTitle.length + " Course titles are as follows\n" + courseTitle.join("\n"));
+    // console.log(courseGrade.length + " Course grades are as follows\n" + courseGrade.join("\n"));
 }
 function insertRow() {
     var x = document.getElementById('gpaTable').tBodies[0];
@@ -150,7 +150,7 @@ function updateFourScale(x) {
 }
 function calcGPAFourScale() {
     var x = document.getElementById("gpaTable").rows.length;
-    // alert(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
+    // console.log(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
     var sumProd = 0;
     var sumCred = 0;
     var gpaScale = 0;
@@ -167,9 +167,9 @@ function calcGPAFourScale() {
 
         }
     }
-    // alert(sumCred);
-    // alert(sumProd);
-    // alert(gpaScale);
+    // console.log(sumCred);
+    // console.log(sumProd);
+    // console.log(gpaScale);
     return gpaScale;
 }
 function calcGPA() {
@@ -178,7 +178,7 @@ function calcGPA() {
 
 function calcGPANineScale() {
     var x = document.getElementById("gpaTable").rows.length;
-    // alert(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
+    // console.log(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
     var sumProd = 0;
     var sumCred = 0;
     var gpaScale = 0;
@@ -192,9 +192,9 @@ function calcGPANineScale() {
             gpaScale = sumProd / sumCred;
         }
     }
-    // alert(sumCred);
-    // alert(sumProd);
-    // alert(gpaFourScale);
+    // console.log(sumCred);
+    // console.log(sumProd);
+    // console.log(gpaFourScale);
     return gpaScale;
 }
 
