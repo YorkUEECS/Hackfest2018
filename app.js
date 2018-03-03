@@ -1,29 +1,29 @@
 function myFunction() {
-    var field = document.getElementById("copiedGradeReport")
+    let field = document.getElementById("copiedGradeReport")
     console.log(field.value);
 }
 function extractSession() {
-    var rx = /FW[0-9][0-9]/;
-    var lgString = document.getElementById("copiedGradeReport").value;
-    var sessions = lgString.match(/[A-z]{2}\d{2}/g);
-    var courseCodes = lgString.match(/[A-z]{2}\s[A-z]{2,4}\s+\d{4}/g);
-    var courseCredit = lgString.match(/\d*\.\d{2}/g);
-    var courseTitle = lgString.match(/\t[\D\u002C?\u003A?\u002E?\u0020*]+\t/g);
-    var courseGrade = lgString.match(/\t[A-F]{1,4}\+?\-?\n|\t[A-F]{1,4}\+?\-?$|in progress|\t[A-F]\+?\-?\u0020+NCR|\t[A-F]\+?\-?\u0020+NGR/g);
-    for (var i = 0; i < courseTitle.length; ++i){
+    let rx = /FW[0-9][0-9]/;
+    let lgString = document.getElementById("copiedGradeReport").value;
+    let sessions = lgString.match(/[A-z]{2}\d{2}/g);
+    let courseCodes = lgString.match(/[A-z]{2}\s[A-z]{2,4}\s+\d{4}/g);
+    let courseCredit = lgString.match(/\d*\.\d{2}/g);
+    let courseTitle = lgString.match(/\t[\D\u002C?\u003A?\u002E?\u0020*]+\t/g);
+    let courseGrade = lgString.match(/\t[A-F]{1,4}\+?\-?\n|\t[A-F]{1,4}\+?\-?$|in progress|\t[A-F]\+?\-?\u0020+NCR|\t[A-F]\+?\-?\u0020+NGR/g);
+    for (let i = 0; i < courseTitle.length; ++i){
         courseTitle[i] = courseTitle[i].replace(/\t|\n/g,'');
     }
-    for (var i = 0; i < courseGrade.length; ++i){
+    for (let i = 0; i < courseGrade.length; ++i){
         courseGrade[i] = courseGrade[i].replace(/\t|\n/g,'');
     }
-    var x = document.getElementById('gpaTable').tBodies[0];
+    let x = document.getElementById('gpaTable').tBodies[0];
 
-    var j = ((sessions.length + 1)- x.rows.length);
-    for (var i = 0; i < j; i++){
+    let j = ((sessions.length + 1)- x.rows.length);
+    for (let i = 0; i < j; i++){
         insertRow();
     }
 
-    for (var i = 0; i < sessions.length; ++i){
+    for (let i = 0; i < sessions.length; ++i){
         x.rows[i].getElementsByTagName('input')[0].value = sessions[i];
         x.rows[i].getElementsByTagName('input')[1].value = courseCodes[i];
         x.rows[i].getElementsByTagName('input')[2].value = courseCredit[i];
@@ -39,30 +39,30 @@ function extractSession() {
     // console.log(courseGrade.length + " Course grades are as follows\n" + courseGrade.join("\n"));
 }
 function insertRow() {
-    var x = document.getElementById('gpaTable').tBodies[0];
-    var new_row = x.rows[0].cloneNode(true);
-    var len = x.rows.length;
-    var inp0 = new_row.cells[0].getElementsByTagName('input')[0];
+    let x = document.getElementById('gpaTable').tBodies[0];
+    let new_row = x.rows[0].cloneNode(true);
+    let len = x.rows.length;
+    let inp0 = new_row.cells[0].getElementsByTagName('input')[0];
     inp0.id += len;
     inp0.value = '';
-    var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+    let inp1 = new_row.cells[1].getElementsByTagName('input')[0];
     inp1.id += len;
     inp1.value = '';
-    var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+    let inp2 = new_row.cells[2].getElementsByTagName('input')[0];
     inp2.id += len;
     inp2.value = '';
-    var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
+    let inp3 = new_row.cells[3].getElementsByTagName('input')[0];
     inp3.id += len;
     inp3.value = '';
-    var inp4 = new_row.cells[4].getElementsByTagName('input')[0];
+    let inp4 = new_row.cells[4].getElementsByTagName('input')[0];
     inp4.id += len;
     inp4.value = '';
     x.appendChild(new_row);
-    var inp5 = new_row.cells[5].getElementsByTagName('input')[0];
+    let inp5 = new_row.cells[5].getElementsByTagName('input')[0];
     inp5.id += len;
     inp5.value = '';
     x.appendChild(new_row);
-    var inp6 = new_row.cells[6].getElementsByTagName('input')[0];
+    let inp6 = new_row.cells[6].getElementsByTagName('input')[0];
     inp6.id += len;
     inp6.value = '';
     x.appendChild(new_row);
@@ -116,13 +116,13 @@ function inputChecksAndUpdates (x) {
 }
 
 function isRowOfInputsPopulated(x) {
-    var row = x.parentNode.parentNode;
-    var numberOfRows = document.getElementById("gpaTable").getElementsByTagName('tr').length - 1;
-    var numberOfInputs = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input').length;
-    var arr;
-    var isInputFilled = false;
-    for( var i = 0; i < numberOfInputs; i++) {
-        var inputValue = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input')[i].value
+    let row = x.parentNode.parentNode;
+    let numberOfRows = document.getElementById("gpaTable").getElementsByTagName('tr').length - 1;
+    let numberOfInputs = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input').length;
+    let arr;
+    let isInputFilled = false;
+    for( let i = 0; i < numberOfInputs; i++) {
+        let inputValue = document.getElementById("gpaTable").rows[numberOfRows].getElementsByTagName('input')[i].value
         if (!(inputValue == "" || inputValue == null)) {
             isInputFilled = true;
             break
@@ -139,26 +139,26 @@ function updateScales(x) {
 }
 
 function updateNineScale(x) {
-    var row = x.parentNode.parentNode;
-    var i = row.rowIndex;
+    let row = x.parentNode.parentNode;
+    let i = row.rowIndex;
     document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value = calcNine(row.getElementsByTagName('input')[4].value);
 }
 function updateFourScale(x) {
-    var row = x.parentNode.parentNode;
-    var i = row.rowIndex;
+    let row = x.parentNode.parentNode;
+    let i = row.rowIndex;
     document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value = calcFour(row.getElementsByTagName('input')[4].value);
 }
 function calcGPAFourScale() {
-    var x = document.getElementById("gpaTable").rows.length;
+    let x = document.getElementById("gpaTable").rows.length;
     // console.log(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
-    var sumProd = 0;
-    var sumCred = 0;
-    var gpaScale = 0;
-    for(var i = 1; i <= x - 1; i++) {
+    let sumProd = 0;
+    let sumCred = 0;
+    let gpaScale = 0;
+    for(let i = 1; i <= x - 1; i++) {
         document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value = calcNine(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[4].value);
         document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value = calcFour(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[4].value);
-        var checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
-        var checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
+        let checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
+        let checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[6].value);
 
         if ( checkIfInt || checkIfloat) {
             sumCred = sumCred + parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value);
@@ -177,14 +177,14 @@ function calcGPA() {
 }
 
 function calcGPANineScale() {
-    var x = document.getElementById("gpaTable").rows.length;
+    let x = document.getElementById("gpaTable").rows.length;
     // console.log(document.getElementById("gpaTable").rows[1].getElementsByTagName('input')[5].value);
-    var sumProd = 0;
-    var sumCred = 0;
-    var gpaScale = 0;
-    for(var i = 1; i <= x - 1; i++) {
-        var checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value);
-        var checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value);
+    let sumProd = 0;
+    let sumCred = 0;
+    let gpaScale = 0;
+    for(let i = 1; i <= x - 1; i++) {
+        let checkIfInt = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value == parseInt(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value);
+        let checkIfloat = document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value == parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[5].value);
 
         if ( checkIfInt || checkIfloat) {
             sumCred = sumCred + parseFloat(document.getElementById("gpaTable").rows[i].getElementsByTagName('input')[2].value);
