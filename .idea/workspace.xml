@@ -2,41 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aae1a3ed-c05e-4dcd-8455-c46a22c0f970" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/style.css" />
-      <change beforePath="$PROJECT_DIR$/.babelrc" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.spec.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/auto-adjust.htm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/counter.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/custom-interval.htm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/custom-node.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/custom-sectors.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/custom-value-renderer.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/customize-style.htm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/defaults.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/font-options.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/format-number.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/html5-data-attribute-config.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/human-friendly-numbers.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/pointer.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/refresh-maximum.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/responsive-gauges.htm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/examples/reverse.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/justgage.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/justgage-1.2.2/raphael-2.1.4.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/favicon.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/public/img/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/public/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/style/app.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/tests.webpack.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,18 +20,38 @@
       <file leaf-file-name="gpa.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GPA/gpa.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="-487">
               <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+            <state relative-caret-position="206">
+              <caret line="22" column="83" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,8 +80,8 @@
       <file leaf-file-name="Untitled.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Untitled.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -112,6 +99,7 @@
       <find>add row</find>
       <find>b</find>
       <find>GPA calculated</find>
+      <find>GPA</find>
     </findStrings>
     <replaceStrings>
       <replace>numberG</replace>
@@ -143,6 +131,7 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -330,7 +319,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18098000" />
+    <option name="totallyTimeSpent" value="18275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1003" extended-state="6" />
@@ -393,30 +382,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="62" lean-forward="false" selection-start-line="76" selection-start-column="62" selection-end-line="76" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GPA/gpa.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -607,16 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="375">
-            <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/style/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -697,14 +652,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/my-app/src/app/app.js" />
     <entry file="file://$PROJECT_DIR$/my-app/src/app/app.html" />
-    <entry file="file://$PROJECT_DIR$/GPA/gpa.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/style/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -729,10 +676,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Untitled.js">
+    <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="375">
+            <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calculator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPA/gpa.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-487">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="22" column="83" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="83" />
           <folding />
         </state>
       </provider>
@@ -745,18 +735,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style.css">
+    <entry file="file://$PROJECT_DIR$/Untitled.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        <state relative-caret-position="0">
+          <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
           <folding />
         </state>
       </provider>
